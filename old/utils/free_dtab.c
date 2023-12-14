@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_dtab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 21:22:43 by liurne            #+#    #+#             */
-/*   Updated: 2023/11/28 21:22:57 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 15:15:37 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../cub3D.h"
 
 void	free_dtab(char **tab)
 {

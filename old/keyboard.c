@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboar.c                                          :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:47:05 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/14 14:47:50 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 16:27:53 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
-
-static void	key_press_op(int keycode, t_data *sl)
-{
-	if (keycode == 103)
-	{
-		if (sl->show_hitbox)
-			sl->show_hitbox = 0;
-		else
-			sl->show_hitbox = 1;
-	}
-	if (keycode == 110)
-		sl->entities[0].nb_mv = sl->nb_case;
-	if (keycode == 65451 && sl->nb_dogs < NB_DOG && sl->entities[0].nb_mv < sl->nb_case)
-	{
-		sl->entities[2 + sl->nb_dogs].alive = 1;
-		sl->nb_dogs++;
-	}
-	if (keycode == 65453 && sl->nb_dogs > 0 && sl->entities[0].nb_mv < sl->nb_case)
-	{
-		sl->entities[2 + sl->nb_dogs].alive = 0;
-		sl->entities[2 + sl->nb_dogs].inmove = 0;
-		sl->nb_dogs--;
-	}
-}
+#include "../cub3d.h"
 
 int	key_press(int keycode, t_data *sl)
 {
+	printf("keycode: %d\n", keycode);
 	if (keycode == 65307)
 		close_window(sl);
 	if ((keycode == 119 || keycode == 65362) && !sl->keys.down)
@@ -48,7 +25,6 @@ int	key_press(int keycode, t_data *sl)
 		sl->keys.left = 1;
 	if ((keycode == 100 || keycode == 65363) && !sl->keys.left)
 		sl->keys.right = 1;
-	key_press_op(keycode, sl);
 	return (keycode);
 }
 

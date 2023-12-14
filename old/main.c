@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:56 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/14 14:44:44 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 15:10:44 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ int	main(int ac, char **av)
 		return (1);
 	if (parsing(&cub))
 		return (1);
+	mlx_hook(cub.win.win, 2, 1L << 0, key_press, &cub);
+	mlx_hook(cub.win.win, 3, 1L << 1, key_release, &cub);
+	mlx_hook(cub.win.win, 17, 1L << 0, close_window, &cub);
+	mlx_loop_hook(cub.win.mlx, event_manager, &cub);
+	mlx_loop(cub.win.mlx);
 	return (0);
 }
