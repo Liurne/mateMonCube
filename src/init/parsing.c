@@ -6,7 +6,7 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:01 by liurne            #+#    #+#             */
-/*   Updated: 2023/11/29 01:29:46 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 14:44:27 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ int function(t_data *cub, char *file)
 
 int	parsing(t_data *cub)
 {
-	function(cub, cub->file);
-//	int	i;
+	//function(cub, cub->file);
+	int	i;
 
-	/*cubtransfo(cub, &(cub->map), cub->map.b_map);
+	cubtransfo(cub, &(cub->map), cub->map.b_map);
 	i = 0;
 	while (cub->map.map[i])
 	{
 		ft_putstr_fd(cub->map.map[i], 1);
 		ft_putstr_fd("\n", 1);
 		i++;
-	}*/
+	}
 	return (0);
 }

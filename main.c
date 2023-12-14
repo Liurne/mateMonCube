@@ -6,7 +6,7 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:56 by liurne            #+#    #+#             */
-/*   Updated: 2023/11/29 01:14:07 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 14:44:44 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_data	cub;
 
-	init_window(cub, WIN_W, WIN_H);
+	init_window(&cub, WIN_W, WIN_H);
 	if (ac < 2 || ac > 2)
 		return (error(&cub, ERR_ARG));
 	if (load_file(&cub, av[1]))

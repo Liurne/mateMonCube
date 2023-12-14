@@ -6,7 +6,7 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:04:36 by liurne            #+#    #+#             */
-/*   Updated: 2023/11/29 01:19:49 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/14 14:50:56 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,7 @@ int	error(t_data *cub, char *msg)
 	return (exit(1), 1);
 }
 
-int process(t_data *cub);
+int process(t_data *cub)
+{
+	while(true)
+}
