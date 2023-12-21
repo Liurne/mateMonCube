@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:47:05 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/14 16:28:17 by jcoquard         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:15:50 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cub3D.h"
+#include "cub3D.h"
 
 int	key_press(int keycode, t_data *cub)
 {

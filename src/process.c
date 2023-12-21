@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/14 16:30:18 by jcoquard         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:38:05 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cub3D.h"
+#include "cub3D.h"
 
 void	free_dtab(char **tab)
 {
@@ -29,6 +29,8 @@ int	error(t_data *cub, char *msg)
 {
 	if (msg)
 		ft_dprintf(2, "Error: %s\n", msg);
+	if (cub->file)
+		free(cub->file);
 	if (cub->map.map)
 		free_dtab(cub->map.map);
 	if (cub->map.b_map)
@@ -43,5 +45,6 @@ int	error(t_data *cub, char *msg)
 
 int process(t_data *cub)
 {
+	(void)cub;
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:01 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/15 14:24:11 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/15 15:41:09 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "cub3D.h"
 
 static int	strcub(const char *haystack)
 {
@@ -33,58 +33,31 @@ static int	strcub(const char *haystack)
 	return (0);
 }
 
-static char	*strjoin_spe(char *s1, char *s2)
-{
-	size_t	i;
-	size_t	j;
-	char	*res;
-
-	i = 0;
-	j = 0;
-	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!res)
-	{
-		free(s1);
-		return (NULL);
-	}
-	while (s1 && s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	while (s2 && s2[j])
-	{
-		res[i + j] = s2[j];
-		j++;
-	}
-	res[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
-	return (res);
-}
-
 static char	*read_file(int fd)
 {
 	char	buff[43];
 	int		rbytes;
-	char	*str;
+	char	*tmp;
+	char	*res;
 
 	rbytes = 1;
-	str = NULL;
+	res = NULL;
 	while (rbytes)
 	{
+		ft_bzero(buff, 43 * sizeof(char));
 		rbytes = read(fd, buff, 42);
 		if (rbytes == -1)
-		{
-			free(str);
-			str = NULL;
+			return (free(res), NULL);
+		tmp = ft_strdup(res);
+		free(res);
+		if(!tmp)
 			return (NULL);
-		}
-		buff[rbytes] = '\0';
-		str = strjoin_spe(str, buff);
-		if (!str)
+		res = ft_strjoin(tmp, buff);
+		free (tmp);
+		if (!res)
 			return (NULL);
 	}
-	return (str);
+	return (res);
 }
 
 int load_file(t_data *cub, char *path)
@@ -96,7 +69,7 @@ int load_file(t_data *cub, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (error(cub, ERR_OPEN));
-	cub->file = read_file(cub, fd);
+	cub->file = read_file(fd);
 	close(fd);
 	if (!cub->file)
 		return (error(cub, ERR_READ));

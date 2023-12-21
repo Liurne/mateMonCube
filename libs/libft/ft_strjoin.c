@@ -6,7 +6,7 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 21:08:00 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/11/15 14:21:45 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/15 15:29:11 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (l == 1)
 		return (NULL);
 	res = (char *)malloc(l * sizeof(char));
-	if (res == NULL)
+	if (!res)
 		return (NULL);
 	while (s1 && s1[i])
 	{

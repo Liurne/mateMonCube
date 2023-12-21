@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
+#    By: liurne <liurne@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2023/12/14 17:10:19 by jcoquard         ###   ########.fr        #
+#    Updated: 2023/12/15 17:17:14 by liurne           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,32 +33,33 @@ END = \033[0m
 NAME = cub3D
 DISPLAY = display
 
-FLAGS		= -Wall -Wextra -Werror# -I libs/minilibx/ -I libs/libft -I incl/
-ARFLAGS		= rsc
+FLAGS		= -Wall -Wextra -Werror -I incl/ -I libs/minilibx/ -I libs/libft
 MLXFLAGS	= -Llibs/minilibx/ -L/usr/lib -lmlx -lXext -lX11 -lm -lz
 MLX			= libs/minilibx/libmlx.a
 
 SRCS = src/main.c \
 		src/window.c \
 		src/keyboard.c \
-		src/process.c
+		src/process.c \
+		src/loading.c\
+		src/parsing/pars_file.c
 
 OBJS = ${SRCS:.c=.o}
 
-HEADER = incl/cub3d.h \
+HEADER	= 	incl/cub3D.h \
 			incl/define.h
 
 all:	libs ${NAME}
 
 
 ${NAME}:	${OBJS}
-	@ gcc ${FLAGS} -o $@ ${OBJS} libs/libft/libft.a ${MLXFLAGS}  && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
+	@ gcc ${FLAGS} -o $@ ${OBJS} libs/libft/libft.a ${MLXFLAGS} && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
 
 libs:
 	${MAKE} -C libs/libft
 
-%.o:	%.c ${HEADER}
-	@ gcc ${FLAGS} -c $< -o $@ && echo "  $@"
+%.o: %.c ${HEADER}
+	@ gcc ${FLAGS} ${HEAD} -c $< -o $@ && echo "  $@"
 
 clean:
 	@ ${RM} ${OBJS} && echo "${RED} * object cleared...${END}"
@@ -66,7 +67,6 @@ clean:
 fclean: clean
 	@ ${RM} ${NAME} && echo "${RED} * everything is cleared...${END}"
 	$(MAKE) fclean -C libs/libft
-# $(MAKE) clean -C libs/minilibx
 
 
 re:	fclean

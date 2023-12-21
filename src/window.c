@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:14:03 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/14 15:43:59 by jcoquard         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:15:27 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/cub3D.h"
+#include "cub3D.h"
 
 int	new_img(t_data *cub, t_img *img, int w, int h)
 {

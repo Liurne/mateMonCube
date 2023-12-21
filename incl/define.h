@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/14 15:22:16 by jcoquard         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:06:10 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ typedef struct s_map
 	t_vec	end;
 	t_img	img;
 	t_img	tex[4];
-	t_color	floor;
-	t_color	celling;
-	
+	t_color	fc_colors[2];
 }	t_map;
 
 typedef struct s_data

@@ -6,7 +6,7 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:01 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/14 14:44:27 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/15 16:57:39 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,30 @@ int function(t_data *cub, char *file)
 	else if (!ft_strncmp(file, "EA", 2))
 		file += get_texture(cub, file, 3);
 	return (0);
+}
+
+int pars_file(t_data *cub, char *file)
+{
+	int	i;
+
+	while (file && *file)
+	{
+		i = 0;
+		while (ft_iswhitespace(file[i]))
+			i++;
+		if (!file[i])
+			return (printf("Map incomplete\n"));
+		if (!ft_strncmp(file, "NO", 2))
+			file += get_texture(cub, file, 0);
+		else if (!ft_strncmp(file, "SO", 2))
+			file += get_texture(cub, file, 1);
+		else if (!ft_strncmp(file, "WE", 2))
+			file += get_texture(cub, file, 2);
+		else if (!ft_strncmp(file, "EA", 2))
+			file += get_texture(cub, file, 3);
+		else if ()
+		
+	}
 }
 
 int	parsing(t_data *cub)

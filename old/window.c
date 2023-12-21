@@ -6,11 +6,11 @@
 /*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:14:03 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/11/29 01:22:27 by liurne           ###   ########.fr       */
+/*   Updated: 2023/12/15 15:09:38 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
+#include "../incl/cub3d.h"
 
 int	new_img(t_data *cub, t_img *img, int w, int h)
 {
