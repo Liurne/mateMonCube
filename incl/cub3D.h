@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/15 16:29:38 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:01:35 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int		key_press(int keycode, t_data *cub);
 int		key_release(int keycode, t_data *cub);
 
 /*     loading     */
-int	load_file(t_data *cub, char *path);
+int		load_file(t_data *cub, char *path);
+
+/*     parsing     */
+int		parsing(t_data *cub);
+int		cubtransfo(t_data *cub, t_map *map, char *str);
 
 #endif

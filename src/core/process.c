@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/15 16:38:05 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/05 13:47:10 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	error(t_data *cub, char *msg)
 	if (cub->map.map)
 		free_dtab(cub->map.map);
 	if (cub->map.b_map)
-		free(cub->map.b_map);
+		free_dtab(cub->map.b_map);
 	destroy_img(cub, &(cub->map.tex[0]));
 	destroy_img(cub, &(cub->map.tex[1]));
 	destroy_img(cub, &(cub->map.tex[2]));

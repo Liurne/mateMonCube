@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/04 17:05:24 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/05 14:11:20 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,14 @@ FLAGS		= -Wall -Wextra -Werror -I incl/ -I libs/minilibx/ -I libs/libft
 MLXFLAGS	= -Llibs/minilibx/ -L/usr/lib -lmlx -lXext -lX11 -lm -lz
 MLX			= libs/minilibx/libmlx.a
 
-SRCS		=	src/main.c
+SRCS		=	src/main.c \
 				src/core/window.c \
 				src/core/keyboard.c \
 				src/core/display.c \
-				src/core/process.c
+				src/core/process.c \
+				src/parsing/parsing.c \
+				src/parsing/transfocube.c \
+				src/parsing/loading.c
 OBJS		= ${SRCS:.c=.o}
 
 HEADER		= incl/cub3D.h \
