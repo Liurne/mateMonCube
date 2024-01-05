@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:48:31 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/05 14:56:08 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/05 17:03:04 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,23 @@
 
 int	parsing(t_data *cub)
 {
-	int	i;
+	int	x;
+	int	y;
 	cubtransfo(cub, &(cub->map), cub->file);
-	i = 0;
-	while (cub->map.map[i])
+	new_img(cub, &(cub->map.img), cub->map.w * 128, cub->map.h * 128);
+	y = 0;
+	while (y < cub->map.h * 128)
 	{
-		ft_putstr_fd(cub->map.map[i], 1);
+		x = 0;
+		while (x < cub->map.w * 128)
+		{
+			if (cub->map.map[x / 128][y / 128] != '1')
+				put_pixel(&(cub->map.img), x, y, 0x00FFFFFF);
+			x++;
+		}
+		ft_putstr_fd(cub->map.map[y], 1);
 		ft_putstr_fd("\n", 1);
-		i++;
+		y++;
 	}
 	return (0);
 }

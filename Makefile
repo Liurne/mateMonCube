@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/05 14:11:20 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/05 17:04:08 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ END			= \033[0m
 NAME		= cub3D
 DISPLAY		= display
 
-FLAGS		= -Wall -Wextra -Werror -I incl/ -I libs/minilibx/ -I libs/libft
+FLAGS		= -Wall -Wextra -Werror -I incl/ -I libs/minilibx/ -I libs/libft -g3 -fsanitize=address
 MLXFLAGS	= -Llibs/minilibx/ -L/usr/lib -lmlx -lXext -lX11 -lm -lz
 MLX			= libs/minilibx/libmlx.a
 
@@ -40,6 +40,7 @@ SRCS		=	src/main.c \
 				src/core/keyboard.c \
 				src/core/display.c \
 				src/core/process.c \
+				src/display/display.c \
 				src/parsing/parsing.c \
 				src/parsing/transfocube.c \
 				src/parsing/loading.c
