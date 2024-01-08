@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:47:05 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/15 15:15:50 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/04 16:50:27 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	key_press(int keycode, t_data *cub)
 		cub->keys.left = 1;
 	if ((keycode == 100 || keycode == 65363) && !cub->keys.left)
 		cub->keys.right = 1;
+	if (keycode == 113 && !cub->keys.r_right)
+		cub->keys.r_left = 1;
+	if (keycode == 101 && !cub->keys.r_left)
+		cub->keys.r_right = 1;
 	return (keycode);
 }
 
@@ -38,5 +42,9 @@ int	key_release(int keycode, t_data *cub)
 		cub->keys.left = 0;
 	if (keycode == 100 || keycode == 65363)
 		cub->keys.right = 0;
+	if (keycode == 113)
+		cub->keys.r_left = 0;
+	if (keycode == 101)
+		cub->keys.r_right = 0;
 	return (keycode);
 }

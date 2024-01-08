@@ -6,11 +6,11 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:04:36 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/14 15:05:54 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:53:08 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3D.h"
 
 int	error(t_data *cub, char *msg)
 {

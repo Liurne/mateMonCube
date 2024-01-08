@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/15 17:06:10 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/04 16:55:06 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,20 @@ typedef struct s_keyboard
 	int	r_right;
 }	t_keyboard;
 
+typedef struct s_entity
+{
+	int	x;
+	int	y;
+	
+} t_entity;
+
 typedef struct s_map
 {
 	char	**map;
-	char	*b_map;
+	char	**b_map;
 	int		w;
 	int		h;
 	t_vec	pos;
-	t_vec	end;
 	t_img	img;
 	t_img	tex[4];
 	t_color	fc_colors[2];
@@ -88,6 +94,7 @@ typedef struct s_data
 	t_win		win;
 	t_keyboard	keys;
 	t_map		map;
+	t_entity	pl;
 	char		*file;
 }	t_data;
 

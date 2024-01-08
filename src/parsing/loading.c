@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:01 by liurne            #+#    #+#             */
-/*   Updated: 2023/12/15 15:41:09 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:56:28 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ static char	*read_file(int fd)
 		ft_bzero(buff, 43 * sizeof(char));
 		rbytes = read(fd, buff, 42);
 		if (rbytes == -1)
-			return (free(res), NULL);
+			return (NULL);
 		tmp = ft_strdup(res);
 		free(res);
-		if(!tmp)
-			return (NULL);
 		res = ft_strjoin(tmp, buff);
 		free (tmp);
 		if (!res)
