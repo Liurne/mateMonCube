@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/05 17:04:08 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/08 13:52:30 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ MLX			= libs/minilibx/libmlx.a
 SRCS		=	src/main.c \
 				src/core/window.c \
 				src/core/keyboard.c \
-				src/core/display.c \
 				src/core/process.c \
 				src/display/display.c \
 				src/parsing/parsing.c \
