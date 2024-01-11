@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:48:31 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/08 18:45:16 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:13:19 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,31 @@ int	parsing(t_data *cub)
 	int	y;
 	cubtransfo(cub, &(cub->map), cub->file);
 	cub->map.w--;
-	new_img(cub, &(cub->map.img), cub->map.w * 64, cub->map.h * 64);
+	cub->map.tile_dim = 64;
+	new_img(cub, &(cub->map.img), cub->map.w * cub->map.tile_dim, cub->map.h * cub->map.tile_dim);
 	x = 0;
-	while (x < cub->map.w * 64)
+	while (x < cub->map.w * cub->map.tile_dim)
 	{
 		y = 0;
-		while (y < cub->map.h * 64)
+		while (y < cub->map.h * cub->map.tile_dim)
 		{
-			if (cub->map.map[x / 64][y / 64] != '0')
+			if (cub->map.map[x / cub->map.tile_dim][y / cub->map.tile_dim] == '1')
 				put_pixel(&(cub->map.img), x, y, 0x00FFFFFF);
+			y++;
+		}
+		x++;
+	}
+	x = 0;
+	while (x < cub->map.w)
+	{
+		y = 0;
+		while (y < cub->map.h)
+		{
+			if (cub->map.map[x][y] == 'N')
+			{
+				init_entity(cub, &cub->pl, x * cub->map.tile_dim, y * cub->map.tile_dim);
+				return (0);
+			}
 			y++;
 		}
 		x++;

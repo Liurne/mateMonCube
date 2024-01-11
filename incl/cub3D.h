@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/05 16:47:59 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:30:30 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
 # include <unistd.h>
+# include <math.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -51,5 +52,8 @@ int		cubtransfo(t_data *cub, t_map *map, char *str);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 int		transparence(int c1, int c2, int t);
+
+/*     init     */
+void init_entity(t_data *cub, t_entity *entity, int x, int y);
 
 #endif

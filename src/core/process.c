@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/08 18:27:11 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:11:02 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	error(t_data *cub, char *msg)
 		free_dtab(cub->map.map);
 	if (cub->map.b_map)
 		free_dtab(cub->map.b_map);
+	destroy_img(cub, &cub->pl.pl);
 	destroy_img(cub, &(cub->map.tex[0]));
 	destroy_img(cub, &(cub->map.tex[1]));
 	destroy_img(cub, &(cub->map.tex[2]));
@@ -45,8 +46,10 @@ int	error(t_data *cub, char *msg)
 
 int process(t_data *cub)
 {
-	(void)cub;
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win,
 		cub->map.img.img, 0, 0);
+	printf("heoh pl.x:%d, pl.y:%d\n", cub->pl.x, cub->pl.y);
+	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x, cub->pl.y);
+	printf("cortte\n");
 	return (0);
 }
