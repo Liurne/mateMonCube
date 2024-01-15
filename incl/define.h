@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 15:35:16 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:50:27 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct s_keyboard
 
 typedef struct s_entity
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 	int w;
 	int h;
 	double dir_x;

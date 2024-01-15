@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 17:11:02 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:20:35 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ int	error(t_data *cub, char *msg)
 
 int process(t_data *cub)
 {
-	mlx_put_image_to_window(cub->win.mlx, cub->win.win,
-		cub->map.img.img, 0, 0);
-	printf("heoh pl.x:%d, pl.y:%d\n", cub->pl.x, cub->pl.y);
-	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x, cub->pl.y);
-	printf("cortte\n");
+	player_manager(cub);
+	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->map.img.img, 0, 0);
+	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x -  cub->pl.w / 2, cub->pl.y -  cub->pl.h / 2);
 	return (0);
 }

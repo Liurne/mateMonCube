@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/11 17:14:58 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/12 15:19:48 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SRCS		=	src/main.c \
 				src/parsing/init.c \
 				src/parsing/transfocube.c \
 				src/parsing/loading.c \
-				src/entity/entity.c
+				src/entity/entity.c \
+				src/map/map.c
 OBJS		= ${SRCS:.c=.o}
 
 HEADER		= incl/cub3D.h \

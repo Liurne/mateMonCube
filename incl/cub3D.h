@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 17:30:30 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:14:26 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,11 @@ int		transparence(int c1, int c2, int t);
 
 /*     init     */
 void init_entity(t_data *cub, t_entity *entity, int x, int y);
+
+/*     entity     */
+void	player_manager(t_data *cub);
+void	rotateLeft(t_entity *entity);
+void	moveForward(t_map *map, t_entity *entity);
+char	get_tile(t_map *map, int x, int y);
 
 #endif

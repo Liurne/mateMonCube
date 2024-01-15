@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:48:31 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 17:13:19 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/12 18:23:29 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	parsing(t_data *cub)
 		{
 			if (cub->map.map[x][y] == 'N')
 			{
+				cub->map.map[x][y] = '0';
 				init_entity(cub, &cub->pl, x * cub->map.tile_dim, y * cub->map.tile_dim);
 				return (0);
 			}
