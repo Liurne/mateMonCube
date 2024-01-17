@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:13:50 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/15 14:25:21 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:20:24 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void rotate_right(t_entity *entity)
 	old_plan_x = entity->plan_x;
 	entity->plan_x = entity->plan_x * cos(-rotation) - entity->plan_y * sin(-rotation);
 	entity->plan_y = old_plan_x * sin(-rotation) + entity->plan_y * cos(-rotation);
-
 }
 
 void moveForward(t_map *map, t_entity *entity)
@@ -73,10 +72,10 @@ void move_right(t_map *map, t_entity *entity)
 	double move;
 
 	move = 0.1;
-	if(get_tile(map, (int)(entity->x + entity->plan_x * move) / map->tile_dim, (int)entity->y / map->tile_dim) == '0')
-		entity->x += entity->plan_x * move;
-	if(get_tile(map, (int)entity->x / map->tile_dim, (int)(entity->y + entity->plan_y * move) / map->tile_dim) == '0')
-		entity->y += entity->plan_y * move;
+	if(get_tile(map, (int)(entity->x - entity->plan_x * move) / map->tile_dim, (int)entity->y / map->tile_dim) == '0')
+		entity->x -= entity->plan_x * move;
+	if(get_tile(map, (int)entity->x / map->tile_dim, (int)(entity->y - entity->plan_y * move) / map->tile_dim) == '0')
+		entity->y -= entity->plan_y * move;
 }
 
 void move_left(t_map *map, t_entity *entity)
@@ -84,10 +83,10 @@ void move_left(t_map *map, t_entity *entity)
 	double move;
 
 	move = 0.1;
-	if(get_tile(map, (int)(entity->x - entity->plan_x * move), (int)entity->y / map->tile_dim) == '0')
-		entity->x -= entity->plan_x * move;
-	if(get_tile(map, (int)entity->x / map->tile_dim, (int)(entity->y - entity->plan_y * move) / map->tile_dim) == '0')
-		entity->y -= entity->plan_y * move;
+	if(get_tile(map, (int)(entity->x + entity->plan_x * move) / map->tile_dim, (int)entity->y / map->tile_dim) == '0')
+		entity->x += entity->plan_x * move;
+	if(get_tile(map, (int)entity->x / map->tile_dim, (int)(entity->y + entity->plan_y * move) / map->tile_dim) == '0')
+		entity->y += entity->plan_y * move;
 }
 void	player_manager(t_data *cub)
 {

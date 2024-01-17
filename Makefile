@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/12 15:19:48 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/17 17:52:49 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS		=	src/main.c \
 				src/core/keyboard.c \
 				src/core/process.c \
 				src/display/display.c \
+				src/display/raycast.c \
 				src/parsing/parsing.c \
 				src/parsing/init.c \
 				src/parsing/transfocube.c \

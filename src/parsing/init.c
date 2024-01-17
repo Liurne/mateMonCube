@@ -6,11 +6,16 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:34:27 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 17:12:00 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:50:52 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+//SUD	= dir(0, 1) plan(0.66, 0)
+//NORD	= dir(0, -1) plan(-0.66, 0)
+//OUEST	= dir(-1, 0) plan(0, 0.66)
+//EST	= dir(1, 0) plan(0, -0.66)
 
 void init_entity(t_data *cub, t_entity *entity, int x, int y)
 {
@@ -19,10 +24,10 @@ void init_entity(t_data *cub, t_entity *entity, int x, int y)
 	entity->y = y;
 	entity->w = 16;
 	entity->h = 16;
-	entity->dir_x = -1;
-	entity->dir_y = 0;
-	entity->plan_x = 0;
-	entity->plan_y = 0.66;
+	entity->dir_x = 0;
+	entity->dir_y = -1;
+	entity->plan_x = -0.66;
+	entity->plan_y = 0;
 	new_img(cub, &entity->pl, 16, 16);
 	i = 0;
 	while (i < entity->w)

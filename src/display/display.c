@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:51:06 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/05 16:47:01 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:01:31 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,28 @@ int	transparence(int c1, int c2, int t)
 	if (b > 255)
 		b = 255;
 	return (255 << 24 | r << 16 | g << 8 | b);
+}
+
+void	line(t_img *img, t_vec p1, t_vec p2, int color)
+{
+	int	dx;
+	int	dy;
+	int	steps;
+	int i;
+
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
+	if (abs(dx) > abs(dy))
+		steps = abs(dx);
+	else
+		steps = abs(dy);
+	i = 0;
+	put_pixel(img, p1.x, p1.y, color);
+	while (i < steps)
+	{
+		p1.x += dx / steps;
+		p1.y += dy / steps;
+		put_pixel(img, p1.x, p1.y, color);
+		i++;
+	}
 }
