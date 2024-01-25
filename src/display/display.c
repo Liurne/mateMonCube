@@ -6,16 +6,20 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:51:06 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/16 16:01:31 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:37:30 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+#include "stdio.h"
+
 void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
+	if (x < 0 || x >= img->img_w || y < 0 || y >= img->img_h)
+		return ;
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
@@ -23,7 +27,8 @@ void	put_pixel(t_img *img, int x, int y, int color)
 int	get_pixel(t_img *img, int x, int y)
 {
 	char	*dst;
-
+	if (x < 0 || x >= img->img_w || y < 0 || y >= img->img_h)
+		return (0);
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	return (*(int *)dst);
 }

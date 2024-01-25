@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:14:03 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/11 14:16:52 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:22:06 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	new_img(t_data *cub, t_img *img, int w, int h)
 {
 	img->img = mlx_new_image(cub->win.mlx, w, h);
+	img->img_h = h;
+	img->img_w = w;
 	if (!img->img)
 		error(cub, ERR_IMG);
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel),

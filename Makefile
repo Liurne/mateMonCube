@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/17 17:52:49 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/24 18:11:23 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ END			= \033[0m
 NAME		= cub3D
 DISPLAY		= display
 
-FLAGS		= -Wall -Wextra -Werror -I incl/ -I libs/minilibx/ -I libs/libft -g3 -fsanitize=address
+FLAGS		= -Wall -Wextra  -I incl/ -I libs/minilibx/ -I libs/libft -g3 -fsanitize=address
 MLXFLAGS	= -Llibs/minilibx/ -L/usr/lib -lmlx -lXext -lX11 -lm -lz
 MLX			= libs/minilibx/libmlx.a
 

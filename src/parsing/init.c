@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:34:27 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/17 15:50:52 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:35:43 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //OUEST	= dir(-1, 0) plan(0, 0.66)
 //EST	= dir(1, 0) plan(0, -0.66)
 
-void init_entity(t_data *cub, t_entity *entity, int x, int y)
+void init_entity(t_data *cub, t_entity *entity, double x, double y)
 {
 	int	i,j;
 	entity->x = x;

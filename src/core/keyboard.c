@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:47:05 by liurne            #+#    #+#             */
-/*   Updated: 2024/01/04 16:50:27 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:38:52 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_press(int keycode, t_data *cub)
 {
-	printf("keycode: %d\n", keycode);
+	//printf("keycode: %d\n", keycode);
 	if (keycode == 65307)
 		close_window(cub);
 	if ((keycode == 119 || keycode == 65362) && !cub->keys.down)

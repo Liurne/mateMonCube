@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/15 14:20:35 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:39:38 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,23 @@ int	error(t_data *cub, char *msg)
 
 int process(t_data *cub)
 {
+	int x, y;
 	player_manager(cub);
-	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->map.img.img, 0, 0);
-	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x -  cub->pl.w / 2, cub->pl.y -  cub->pl.h / 2);
+	//printf("win w:%d, h:%d\n",cub->win.w, cub->win.h);
+	x = 0;
+	while(x < cub->win.w)
+	{
+		y = 0;
+		while (y < cub->win.h)
+		{
+			put_pixel(&cub->win.renderer, x, y, 0x000000);
+			y++;
+		}
+		x++;
+	}
+	raycast(cub);
+	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->win.renderer.img, 0, 0);
+	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->map.img.img, 0, 0);
+	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x * cub->map.tile_dim - cub->pl.w / 2, cub->pl.y * cub->map.tile_dim - cub->pl.h / 2);
 	return (0);
 }
