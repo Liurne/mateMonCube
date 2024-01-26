@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/24 17:28:06 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:55:12 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,20 @@ int		cubtransfo(t_data *cub, t_map *map, char *str);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 int		transparence(int c1, int c2, int t);
-void	line(t_img *img, t_vec p1, t_vec p2, int color);
-void	raycast(t_data *cub);
+void	draw_line(t_img *img, t_line *line, int color);
+void	raycast(t_data *cub, t_entity *e, t_map *map);
 
 /*     init     */
-void init_entity(t_data *cub, t_entity *entity, double x, double y);
+void	init_entity(t_data *cub, t_entity *entity, double x, double y);
 
 /*     entity     */
 void	player_manager(t_data *cub);
 char	get_tile(t_map *map, int x, int y);
+
+/*     utils     */
+t_vec	vec(int x, int y);
+void	init_vec(t_vec *vec, int x, int y);
+t_dvec	dvec(double x, double y);
+void	init_dvec(t_dvec *vec, double x, double y);
 
 #endif

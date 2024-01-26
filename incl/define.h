@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/15 13:50:27 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:10:27 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define ERR_CUB "Invalid file extension (need .cub)"
 # define ERR_OPEN "Couldn't open the file"
 # define ERR_READ "Couldn't read the file"
+# define SPEED_ROTATE 0.04
+# define SPEED_MOVE 0.1
 # define WIN_W 1280
 # define WIN_H 768
 
@@ -31,6 +33,33 @@ typedef struct s_vec
 	int	x;
 	int	y;
 }	t_vec;
+
+typedef struct s_dvec
+{
+	double	x;
+	double	y;
+}	t_dvec;
+
+typedef struct s_line
+{
+	t_vec	p1;
+	t_vec	p2;
+}	t_line;
+
+typedef struct s_ray
+{
+	int		collision;
+	int		side;
+	double	distance;
+	double	camera;
+	t_dvec	direction;
+	t_dvec	range_next;
+	t_dvec	next;
+	t_vec	step;
+	t_vec	map_pos;
+	int		line_h;
+	t_line	ray_line;
+}	t_ray;
 
 typedef struct s_color
 {
@@ -72,14 +101,11 @@ typedef struct s_keyboard
 
 typedef struct s_entity
 {
-	double	x;
-	double	y;
+	t_dvec pos;
 	int w;
 	int h;
-	double dir_x;
-	double dir_y;
-	double plan_x;
-	double plan_y;
+	t_dvec	dir;
+	t_dvec	plan;
 	t_img pl;
 } t_entity;
 

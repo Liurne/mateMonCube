@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/25 14:39:38 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:56:40 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int process(t_data *cub)
 		}
 		x++;
 	}
-	raycast(cub);
+	raycast(cub, &cub->pl, &cub->map);
 	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->win.renderer.img, 0, 0);
 	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->map.img.img, 0, 0);
 	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x * cub->map.tile_dim - cub->pl.w / 2, cub->pl.y * cub->map.tile_dim - cub->pl.h / 2);

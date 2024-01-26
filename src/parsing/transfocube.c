@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:01 by liurne            #+#    #+#             */
-/*   Updated: 2024/01/08 18:40:52 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:47:34 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ int	cubtransfo(t_data *cub, t_map *map, char *str)
 	}
 	if (map->w < j)
 		map->w = j;
-	printf("yup\n");
 	alloc_cub(cub, map);
-	printf("pute\n");
 	cpy_cub(map, str);
-	printf("tepu\n");
 	return (0);
 }

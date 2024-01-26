@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/24 18:11:23 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/26 17:47:53 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS		=	src/main.c \
 				src/parsing/transfocube.c \
 				src/parsing/loading.c \
 				src/entity/entity.c \
+				src/utils/vec.c \
 				src/map/map.c
 OBJS		= ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:34:27 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/25 16:35:43 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:57:11 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 void init_entity(t_data *cub, t_entity *entity, double x, double y)
 {
 	int	i,j;
-	entity->x = x;
-	entity->y = y;
+	entity->pos.x = x;
+	entity->pos.y = y;
 	entity->w = 16;
 	entity->h = 16;
-	entity->dir_x = 0;
-	entity->dir_y = -1;
-	entity->plan_x = -0.66;
-	entity->plan_y = 0;
+	entity->dir.x = 0;
+	entity->dir.y = -1;
+	entity->plan.x = -0.66;
+	entity->plan.y = 0;
 	new_img(cub, &entity->pl, 16, 16);
 	i = 0;
 	while (i < entity->w)

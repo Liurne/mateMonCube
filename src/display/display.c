@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 16:51:06 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/25 16:37:30 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:51:58 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,26 @@ int	transparence(int c1, int c2, int t)
 	return (255 << 24 | r << 16 | g << 8 | b);
 }
 
-void	line(t_img *img, t_vec p1, t_vec p2, int color)
+void	draw_line(t_img *img, t_line *line, int color)
 {
 	int	dx;
 	int	dy;
 	int	steps;
 	int i;
 
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
+	dx = line->p2.x - line->p1.x;
+	dy = line->p2.y - line->p1.y;
 	if (abs(dx) > abs(dy))
 		steps = abs(dx);
 	else
 		steps = abs(dy);
 	i = 0;
-	put_pixel(img, p1.x, p1.y, color);
+	put_pixel(img, line->p1.x, line->p1.y, color);
 	while (i < steps)
 	{
-		p1.x += dx / steps;
-		p1.y += dy / steps;
-		put_pixel(img, p1.x, p1.y, color);
+		line->p1.x += dx / steps;
+		line->p1.y += dy / steps;
+		put_pixel(img, line->p1.x, line->p1.y, color);
 		i++;
 	}
 }
