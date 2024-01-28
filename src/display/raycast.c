@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/26 18:40:10 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/29 00:11:06 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,20 @@ void get_collision(t_ray *ray, t_map *map)
 		if (get_tile(map, ray->map_pos.x, ray->map_pos.y) != '0')
 			ray->collision = 1;
 	}
+}
+
+void draw_ray(t_data *cub, t_ray *ray, t_entity *e)
+{
+		if (ray->side % 2)
+			ray->wall_x = e->pos.x + ((ray->map_pos.y - e->pos.y + (1 - ray->step.y) * 0.5) / ray->direction.y) * ray->direction.x;
+		else
+			ray->wall_x = e->pos.y + ((ray->map_pos.x - e->pos.x + (1 - ray->step.x) * 0.5) / ray->direction.x) * ray->direction.y;
+		ray->wall_x -= floor((ray->wall_x));
+		ray->tex_x = (int)(ray->wall_x * (double)(cub->data.tex_wall[ray->side].img_w));
+		if(!(ray->side % 2) && ray->direction.x > 0) 
+			ray->tex_x = cub->data.tex_wall[ray->side].img_w - ray->tex_x - 1;
+		if(ray->side % 2 && ray->direction.y < 0) 
+			ray->tex_x = cub->data.tex_wall[ray->side].img_w - ray->tex_x - 1;
 }
 
 void	raycast(t_data *cub, t_entity *e, t_map *map)
