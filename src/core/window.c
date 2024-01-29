@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:14:03 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/24 18:22:06 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:04:11 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	load_img(t_data *cub, char *path, t_img *img)
 {
 	img->img = mlx_xpm_file_to_image(cub->win.mlx, path, &(img->img_w),
 			&(img->img_h));
+		
 	if (!img->img)
 		return(printf("%s\n", path), 1);
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel),

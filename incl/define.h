@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/29 00:03:43 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/29 14:41:09 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_line
 	t_vec	p1;
 	t_vec	p2;
 }	t_line;
+
+typedef struct s_rect
+{
+	t_vec	pos;
+	int		w;
+	int		h;
+}	t_rect;
 
 typedef struct s_ray
 {

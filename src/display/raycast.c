@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/29 00:11:06 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/29 18:41:14 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,35 @@ void draw_ray(t_data *cub, t_ray *ray, t_entity *e)
 		else
 			ray->wall_x = e->pos.y + ((ray->map_pos.x - e->pos.x + (1 - ray->step.x) * 0.5) / ray->direction.x) * ray->direction.y;
 		ray->wall_x -= floor((ray->wall_x));
-		ray->tex_x = (int)(ray->wall_x * (double)(cub->data.tex_wall[ray->side].img_w));
+		ray->tex_x = (int)(ray->wall_x * (double)(cub->data.tex_wall[0].img_w));
 		if(!(ray->side % 2) && ray->direction.x > 0) 
-			ray->tex_x = cub->data.tex_wall[ray->side].img_w - ray->tex_x - 1;
+			ray->tex_x = cub->data.tex_wall[0].img_w - ray->tex_x - 1;
 		if(ray->side % 2 && ray->direction.y < 0) 
-			ray->tex_x = cub->data.tex_wall[ray->side].img_w - ray->tex_x - 1;
+			ray->tex_x = cub->data.tex_wall[0].img_w - ray->tex_x - 1;
+		//if (ray->side == 0)
+		//	printf("text_h: %d", ray->ray_line.p2.y - ray->ray_line.p1.y);
+		if (ray->side == 0)
+		{
+			//t_line	line;
+			//t_line	line2;
+			display_texture(&cub->win.renderer, &cub->data.tex_wall[0], rect(ray->tex_x, 0 , 1, cub->data.tex_wall[0].img_h), rect(ray->ray_line.p1.x, ray->ray_line.p1.y, 1, ray->ray_line.p2.y - ray->ray_line.p1.y));
+			/*line.p1.x = ray->ray_line.p1.x;
+			line.p1.y = ray->ray_line.p1.y;
+			line.p2.x = ray->ray_line.p1.x;
+			line.p2.y = ray->ray_line.p1.y + ray->ray_line.p2.y - ray->ray_line.p1.y;
+			line2.p1.x = ray->tex_x;
+			line2.p1.y = 0;
+			line2.p2.x = ray->tex_x;
+			line2.p2.y = cub->data.tex_wall[0].img_h;
+			draw_line(&cub->win.renderer, &line, 0x00FF0000);
+			draw_line(&cub->win.renderer, &line2, 0x00FFA000);*/
+		}
+		else if (ray->side == 2)
+			draw_line(&cub->win.renderer, &ray->ray_line, 0x00FF00FF);
+		else if (ray->side == 1)
+			draw_line(&cub->win.renderer, &ray->ray_line, 0x00A00000);
+		else if (ray->side == 3)
+			draw_line(&cub->win.renderer, &ray->ray_line, 0x00FF00A0);
 }
 
 void	raycast(t_data *cub, t_entity *e, t_map *map)
@@ -124,6 +148,8 @@ void	raycast(t_data *cub, t_entity *e, t_map *map)
 				ray.ray_line.p1.y = 0;
 			if (ray.ray_line.p2.y >= cub->win.w)
 				ray.ray_line.p2.y = cub->win.h - 1;
+			draw_ray(cub, &ray, e);
+			/*
 			if (ray.side == 0)
 				draw_line(&cub->win.renderer, &ray.ray_line, 0x00FF0000);
 			else if (ray.side == 2)
@@ -132,6 +158,7 @@ void	raycast(t_data *cub, t_entity *e, t_map *map)
 				draw_line(&cub->win.renderer, &ray.ray_line, 0x00A00000);
 			else if (ray.side == 3)
 				draw_line(&cub->win.renderer, &ray.ray_line, 0x00FF00A0);
+				*/
 		}
 		i++;
 	}

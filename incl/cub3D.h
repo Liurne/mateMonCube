@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/26 17:55:12 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:20:26 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ t_vec	vec(int x, int y);
 void	init_vec(t_vec *vec, int x, int y);
 t_dvec	dvec(double x, double y);
 void	init_dvec(t_dvec *vec, double x, double y);
+void	display_texture(t_img *renderer, t_img *img, t_rect src, t_rect dst);
+t_rect	rect(int x, int y, int w, int h);
+void	init_rect(t_rect *rect, int x, int y, int w, int h);
 
 #endif
