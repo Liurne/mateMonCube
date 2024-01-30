@@ -6,7 +6,7 @@
 #    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 12:11:13 by jcoquard          #+#    #+#              #
-#    Updated: 2024/01/29 16:14:56 by jcoquard         ###   ########.fr        #
+#    Updated: 2024/01/30 14:55:10 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS		=	src/main.c \
 				src/utils/vec.c \
 				src/utils/rect.c \
 				src/core/texture.c \
-				src/map/map.c
+				src/map/map.c \
+				src/utils/line.c
 OBJS		= ${SRCS:.c=.o}
 
 HEADER		= incl/cub3D.h \

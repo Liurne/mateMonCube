@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:18:53 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/30 11:35:37 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:07:55 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ typedef struct s_ray
 	t_vec	step;
 	t_vec	map_pos;
 	int		line_h;
-	t_line	ray_line;
-	t_rect	src;
-	t_rect	dst;
+	t_line	ray;
+	t_rect	text_ray;
+	t_rect	rect_ray;
 	double	wall_x;
 	int		tex_x;
 }	t_ray;
@@ -133,9 +133,7 @@ typedef struct s_map
 
 typedef struct s_cub_textures
 {
-	t_img	tex_wall[4];
-	t_color	col_floor;
-	t_color	col_ceilling;
+	
 }	t_cub_textures;
 
 typedef struct s_data
@@ -145,7 +143,9 @@ typedef struct s_data
 	t_map		map;
 	t_entity	pl;
 	char		*file;
-	t_cub_textures data;
+	t_img	tex_wall[4];
+	t_color	col_floor;
+	t_color	col_ceilling;
 }	t_data;
 
 #endif

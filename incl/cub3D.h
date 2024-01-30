@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:17:58 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/30 11:31:14 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/30 14:55:25 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void	init_dvec(t_dvec *vec, double x, double y);
 void	display_texture(t_img *renderer, t_img *img, t_rect *src, t_rect *dst);
 t_rect	rect(int x, int y, int w, int h);
 void	init_rect(t_rect *rect, int x, int y, int w, int h);
+void	init_line(t_line *line, int x1, int y1, int x2, int y2);
+t_line 	line(int x1, int y1, int x2, int y2);
 
 #endif
