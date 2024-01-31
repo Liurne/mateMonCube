@@ -1,0 +1,21 @@
+NO ./textures/Brick.xpm
+SO ./textures/Metal.xpm
+WE ./textures/Tile.xpm
+EA ./textures/Wood.xpm
+
+F 220,100,0
+C 225,30,0
+
+1111111
+1000001
+1000001
+1010001
+100N001
+1010101
+1000001
+1001001
+1001001
+1001001
+1000001
+1000001
+1111111
