@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/30 18:10:27 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:33:17 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,24 @@ void	get_collision(t_ray *ray, t_map *map)
 
 void	calculate_wall_tex(t_data *cub, t_ray *ray, t_entity *e)
 {
-	if (ray->side % 2)
-		ray->wall_x = e->pos.x + ((ray->map_pos.y - e->pos.y \
-		+ (1 - ray->step.y) * 0.5) / ray->direction.y) * ray->direction.x;
-	else
-		ray->wall_x = e->pos.y + ((ray->map_pos.x - e->pos.x \
-		+ (1 - ray->step.x) * 0.5) / ray->direction.x) * ray->direction.y;
-	ray->wall_x -= floor((ray->wall_x));
 	ray->tex_x = (int)(ray->wall_x * (double)(cub->tex_wall[ray->side].img_w));
-	if(!(ray->side % 2) && ray->direction.x > 0) 
+	if (!(ray->side % 2) && ray->direction.x > 0)
 		ray->tex_x = cub->tex_wall[ray->side].img_w - ray->tex_x - 1;
-	if(ray->side % 2 && ray->direction.y < 0) 
+	if (ray->side % 2 && ray->direction.y < 0)
 		ray->tex_x = cub->tex_wall[ray->side].img_w - ray->tex_x - 1;
-	init_rect(&ray->text_ray, ray->tex_x, 0 , 1, cub->tex_wall[ray->side].img_h);
-	init_rect(&ray->rect_ray, ray->ray.p1.x, ray->ray.p1.y, 1, ray->ray.p2.y - ray->ray.p1.y);
-	if(ray->ray.p1.y < 0)
+	init_rect(&ray->text_ray, ray->tex_x, 0, 1, cub->tex_wall[ray->side].img_h);
+	init_rect(&ray->rect_ray, ray->ray.p1.x, ray->ray.p1.y, 1, \
+	ray->ray.p2.y - ray->ray.p1.y);
+	if (ray->ray.p1.y < 0)
 	{
-		ray->text_ray.pos.y = cub->tex_wall[ray->side].img_h * 0.5 * (1 - ((double)cub->win.h /(double) ray->line_h));
+		ray->text_ray.pos.y = cub->tex_wall[ray->side].img_h * 0.5 * \
+		(1 - ((double)cub->win.h / (double)ray->line_h));
 		ray->rect_ray.pos.y = 0;
 	}
 	if (ray->ray.p2.y >= cub->win.h)
 	{
-		ray->text_ray.h = (cub->tex_wall[ray->side].img_h * ((double)cub->win.h /(double) ray->line_h)) * 1.70;
+		ray->text_ray.h = (cub->tex_wall[ray->side].img_h * \
+		((double)cub->win.h / (double)ray->line_h)) * 1.70;
 		ray->rect_ray.h = cub->win.w - 1;
 	}
 }
@@ -114,29 +110,40 @@ void	calculate_wall_tex(t_data *cub, t_ray *ray, t_entity *e)
 void	calculate_ray_height(t_data *cub, t_ray *ray, t_entity *e)
 {
 	if (ray->side % 2 == 0)
-		ray->distance = fabs((ray->map_pos.x - (e->pos.x) + (1 - ray->step.x) * 0.5) / ray->direction.x);
+		ray->distance = fabs((ray->map_pos.x - (e->pos.x) + \
+		(1 - ray->step.x) * 0.5) / ray->direction.x);
 	else
-		ray->distance = fabs((ray->map_pos.y - (e->pos.y) + (1 - ray->step.y) * 0.5) / ray->direction.y);
+		ray->distance = fabs((ray->map_pos.y - (e->pos.y) + \
+		(1 - ray->step.y) * 0.5) / ray->direction.y);
 	ray->line_h = cub->win.h / ray->distance;
 	ray->ray.p1.y = -ray->line_h * 0.5 + cub->win.h * 0.5;
 	ray->ray.p2.y = ray->line_h * 0.5 + cub->win.h * 0.5;
+	if (ray->side % 2)
+		ray->wall_x = e->pos.x + ((ray->map_pos.y - e->pos.y \
+		+ (1 - ray->step.y) * 0.5) / ray->direction.y) * ray->direction.x;
+	else
+		ray->wall_x = e->pos.y + ((ray->map_pos.x - e->pos.x \
+		+ (1 - ray->step.x) * 0.5) / ray->direction.x) * ray->direction.y;
+	ray->wall_x -= floor((ray->wall_x));
 	calculate_wall_tex(cub, ray, e);
-	if(ray->ray.p1.y < 0)
+	if (ray->ray.p1.y < 0)
 		ray->ray.p1.y = 0;
 	if (ray->ray.p2.y >= cub->win.h)
 		ray->ray.p2.y = cub->win.h - 1;
 }
 
-void draw_ray(t_data *cub, t_ray *ray)
+void	draw_ray(t_data *cub, t_ray *ray)
 {
 	t_line	ceiling;
 	t_line	floor;
 
 	init_line(&ceiling, ray->ray.p1.x, 0, ray->ray.p1.x, ray->ray.p1.y);
-	init_line(&floor, ray->ray.p1.x, ray->ray.p2.y, ray->ray.p1.x, cub->win.h - 1);
-	draw_line(&cub->win.renderer, &ceiling,0x000900090);
+	init_line(&floor, ray->ray.p1.x, ray->ray.p2.y, ray->ray.p1.x, \
+		cub->win.h - 1);
+	draw_line(&cub->win.renderer, &ceiling, 0x000900090);
 	if (cub->tex_wall[ray->side].img)
-		display_texture(&cub->win.renderer, &cub->tex_wall[ray->side], &ray->text_ray, &ray->rect_ray);
+		display_texture(&cub->win.renderer, &cub->tex_wall[ray->side], \
+		&ray->text_ray, &ray->rect_ray);
 	else
 	{
 		if (ray->side == 0)
