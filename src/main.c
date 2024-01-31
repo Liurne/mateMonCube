@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:25:47 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/30 18:10:51 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:15:49 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int ac, char **av)
 	parsing(&cub);
 	printf("nop\n");
 	load_img(&cub, "tex/mossy_1.xpm", &cub.tex_wall[0]);
+	load_img(&cub, "tex/mossy_1.xpm", &cub.tex_wall[2]);
+	load_img(&cub, "tex/mossy_1.xpm", &cub.tex_wall[3]);
 	load_img(&cub, "tex/Tile.xpm", &cub.tex_wall[1]);
 	mlx_hook(cub.win.win, 2, 1L << 0, key_press, &cub);
 	mlx_hook(cub.win.win, 3, 1L << 1, key_release, &cub);
