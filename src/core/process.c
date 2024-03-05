@@ -3,62 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 15:28:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/30 18:08:33 by jcoquard         ###   ########.fr       */
+/*   Created: 2024/01/31 17:51:37 by jcoquard          #+#    #+#             */
+/*   Updated: 2024/02/21 17:45:33 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "xenocube.h"
 
-void	free_dtab(char **tab)
+int	quit_loop(t_cub_context *cub)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
+	mlx_loop_end(cub->win.mlx);
+	return (0);
 }
 
-int	error(t_data *cub, char *msg)
+int	process(t_cub_context *cub)
 {
-	if (msg)
-		ft_dprintf(2, "Error: %s\n", msg);
-	if (cub->file)
-		free(cub->file);
-	if (cub->map.map)
-		free_dtab(cub->map.map);
-	if (cub->map.b_map)
-		free_dtab(cub->map.b_map);
-	destroy_img(cub, &cub->pl.pl);
-	destroy_img(cub, &(cub->tex_wall[0]));
-	destroy_img(cub, &(cub->tex_wall[1]));
-	destroy_img(cub, &(cub->tex_wall[2]));
-	destroy_img(cub, &(cub->tex_wall[3]));
-	close_window(cub);
-	return (exit(1), 1);
-}
-
-int process(t_data *cub)
-{
-	t_rect	src;
-	t_rect	dst;
-	t_rect	cadre;
-
-	init_rect(&src, 5,5,126,126);
-	init_rect(&dst, 50,50,500,500);
-	init_rect(&cadre, 49, 49, 501, 501);
 	player_manager(cub);
-	//printf("win w:%d, h:%d\n",cub->win.w, cub->win.h);
-	//display_texture(&cub->win.renderer, &cub->data.tex_wall[0], &src, &dst);
-	raycast(cub, &cub->pl, &cub->map);
-	mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->win.renderer.img, 0, 0);
-	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->map.img.img, 0, 0);
-	//mlx_put_image_to_window(cub->win.mlx, cub->win.win, cub->pl.pl.img, cub->pl.x * cub->map.tile_dim - cub->pl.w / 2, cub->pl.y * cub->map.tile_dim - cub->pl.h / 2);
+	raycast(cub, &cub->player, &cub->map);
+	mlx_put_image_to_window(cub->win.mlx,
+		cub->win.win, cub->win.renderer.img, 0, 0);
 	return (0);
 }
